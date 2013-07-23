@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    	<meta content="text/html; charset=utf-8" />
+    	<title>My stupid Bitstarter</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
+        <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:316,400,500,700,316italic,400italic,500italic,700italic">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:316italic,400italic,600italic,700italic,316,400,600,700,800">
+        <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.css">
+		<script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+        <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
+        <style type="text/css">
+			/* large desktop */
+			@media (min-width: 980px) {
+				body{
+					padding-top:60px;
+				}
+				
+				.linediv-l {
+					border-right: 1px white solid;
+				}
+				
+				.linediv-r {
+					border-right: 1px white solid;
+				}
+			}
+			
+			/* landscape phones and down */
+			@media (max-width: 566px) {
+				.copy {
+					padding: 2.5% 10%;
+				}
+				
+				.linediv-l {
+					border-right: 1px white solid;
+				}
+				
+				.linediv-r {
+					border-right: 1px white solid;
+				}
+			}
+			
+			/* All form factors */
+			/* Main body and headings */
+			
+			body {
+				font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+			}
+				
+			.heading, .subheading {
+				font-family:'Ubuntu', Helvetica, Arial, sans-serif;
+				text-align: center;
+			}
+			
+			p.lead {
+				padding-top: 1.5px;
+				font-size: 24px;
+				line-height: 30px;
+			}
+			
+			p {
+				font-size: 18px;
+				line-height:24px;
+			}
+			
+			/* Video pitch and Action */
+			.pitch {
+				padding: 2.5% 0%;
+			}
+			
+			.order {
+				padding: 2% 0%;
+			}
+			
+			.actions {
+				background-color:#343434;
+				padding:3% 0%;
+			}
+			
+			.video, .thermometer, .order, .social, .statistics {
+				text-align: center;
+			}
+			
+			.statistics h3, .statistics p{
+				color: white;
+			}
+			
+			/* Marketing copy and Footer */
+			.copy {
+				padding-top: 2.5%;
+				padding-bottom: 2.5%;
+				text-align: justify;
+			}
+			
+			.asset {
+				padding: 2.5% 0%;
+			}
+			
+			.footer {
+				color: #cccccc;
+				text-align: center;
+			}
+			
+			.footer p {
+				font-size:11px;
+			}
+			
+			.footer a {
+				color: #ccccff;
+			}
+			
+			.toolSet {
+				background-color:#EEE;
+				padding:10px 20px 0px 0px;
+				border-radius:3px;
+				border:#999;
+				box-shadow:inset;
+			}
+			
+		</style>
+       </head>
+    </head>
+
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="brand" href="#">History Visualization</a>
+              <div class="nav-collapse collapse">
+                <ul class="nav">
+                  <li><a href="#">Home</a></li>
+                  <li><a href="#contact">Newest</a></li>
+                  <li class="active"><a href="#demo">Demo</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                  <li><a href="#contact">Blog</a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+        </div>
+        
+        <div class="container">
+        	<div class="row-fluid heading">
+            	<div class="span6 text-left">
+                	<h1>Geographical regions</h1>
+                	<h4 class="text-info">Let's make some regions on your map</h4>
+                </div>
+            </div>
+        	<div class="row-fluid">
+                <div class="span8">
+                    <canvas class="span12 canvas1" id="mapCanvas">  
+                        <!-- Insert fallback content here -->  
+                    </canvas>
+                </div>
+                
+                <div class="span4 toolSet">
+                	<div></div>
+                	<div class="span12 well">
+                        <div class="span12">
+                            <div class="btn-group btn-group-vertical">
+                                <h5 class="text-info text-left" style="margin-top:-5px;">Region select</h5>
+                                <button type="button" style="width:60px" class="btn"><i class="icon-magic icon-2x"></i></button>
+                                <button type="button" style="width:60px" class="btn"><i class="icon-edit icon-2x"></i></button>
+                                
+                            </div>
+                        </div>
+                        <div class="btn btn-primary pull-right" style="margin-bottom:-5px;"> Create new region </div>
+                    </div>
+                    <div class="span12 well">
+                        <div class="span12">
+                            <div class="btn-group btn-group-vertical">
+                                <h5 class="text-info text-left" style="margin-top:-5px;">Add chart</h5>
+                                
+                                <form>
+                                	<label>Select element to add chart</label>
+                                    <select>
+                                    	<option value="r1">Region 1</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="btn btn-primary pull-right" style="margin-bottom:-5px;">Add chart to this element </div>
+                    </div>
+                    <div class="span12 well">
+                        <div class="span12">
+                            <div class="btn-group btn-group-vertical">
+                                <h5 class="text-info text-left" style="margin-top:-5px;">Add text</h5>
+                                
+                                <form>
+                                	<label>Select element to add text</label>
+                                    <select>
+                                    	<option value="r1">Region 1</option>
+                                    </select>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="btn btn-primary pull-right" style="margin-bottom:-5px;">Add chart to this element </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script type="application/javascript">
+			// attach the .compare method to Array's prototype to call it on any array
+			Array.prototype.compare = function (array) {
+				// if the other array is a falsy value, return
+				if (!array)
+					return false;
+			
+				// compare lengths - can save a lot of time
+				if (this.length != array.length)
+					return false;
+			
+				for (var i = 0; i < this.length; i++) {
+					// Check if we have nested arrays
+					if (this[i] instanceof Array && array[i] instanceof Array) {
+						// recurse into the nested arrays
+						if (!this[i].compare(array[i]))
+							return false;
+					}
+					else if (this[i] != array[i]) {
+						// Warning - two different object instances will never be equal: {x:20} != {x:20}
+						return false;
+					}
+				}
+				return true;
+			}
+			
+			$(document).ready(function() {
+					
+				var canvas = document.getElementById("mapCanvas");  
+				var ctx = canvas.getContext("2d");
+				
+				(function (){
+					var image = new Image();  
+					
+					var height, width;
+					image.onload = function() {
+						/* reset height and width to match scroll height and width */
+						(function () {
+							height = image.height;
+							width = image.width;
+							
+							canvas.width  = width;
+							canvas.height = height;
+							canvas.width = canvas.scrollWidth;
+							canvas.height = canvas.scrollHeight;
+							
+						})();
+						
+						
+						/* draw image into canvas */ 
+						ctx.drawImage(image, 0, 0, width , height, 0, 0, canvas.width, canvas.height); 
+					}
+					image.src = "image/map-of-southeast-asia.jpg";
+					
+				})();
+				
+				
+				window.doArray = function (array, func ){
+					for (var e in array){
+						func(array[e]);
+					};
+				}
+				
+				window.metrics = function ( array1, array2, funct ){
+					if (array1.length != array2.length ) return -1;
+					var sum = 0;
+					for (var i=0; i < array1.length; i += 1) {
+						sum += funct(array1[i] - array2[i]);
+					}
+					return sum;
+				}
+				
+				setTimeout( function(){
+					$(canvas).click(function(e) {  
+						var canvasOffset = $(canvas).offset();  
+						var canvasX = Math.floor((e.pageX-canvasOffset.left));  
+						var canvasY = Math.floor((e.pageY-canvasOffset.top));
+					  
+						var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+						
+						var pixelSlice = function( pixels, index1, index2 ){
+							return [].slice.apply(pixels, [index1, index2]);
+						}
+						
+						var segmentation_map = {};
+						var checked = {}; 
+						(function(pixels, width, height, X, Y, threshold){
+							
+							
+							var pixelRedIndex = ((Y - 1) * (width * 4)) + ((X - 1) * 4); 
+							var pixelcolor = pixelSlice(pixels, pixelRedIndex, pixelRedIndex + 4);
+							/*var pixelcolor = [pixels[pixelRedIndex], pixels[pixelRedIndex + 1], pixels[pixelRedIndex + 2], pixels[pixelRedIndex+3]];*/
+							segmentation_map[pixelRedIndex] = pixelcolor;
+							checked[pixelRedIndex] = true;
+							searching_array = [];
+							searching_array.push([X,Y]);
+							
+							
+							var combined_distance = function ( oripix, pix1, pix2 ){
+								return metrics(oripix, pix1, function(e){return Math.pow(e,2);})  + metrics(pix2, pix1, function(e){return Math.pow(e,2);});
+							}
+							
+							var nexts = function(X, Y, pixelcolor1){
+								
+								var checkAcceptable = function( X, Y, width, height ){
+									if ( 0 < X & 0 < Y & X < width & Y < height ) return true;
+									return false;
+								};
+								
+								next_candidates = [];
+								t = 1;
+								for ( var i = -t; i <= t; i += 1)
+									for ( var j = -t; j <= t; j += 1){
+										if ( checkAcceptable( X + i, Y + j, width, height ) & (i!=0 || j!=0)){
+											next_candidates.push([X+i,Y+j]);
+										}
+									}
+								
+								
+								return doArray( next_candidates,
+									function(element){
+										
+										var newPixelRedIndex = ((element[1] - 1) * (width * 4)) + ((element[0] - 1) * 4);
+										if ( checked[newPixelRedIndex] ) return false;
+										checked[newPixelRedIndex] = true;
+										
+										var pixelcolor2 = pixelSlice(pixels, newPixelRedIndex, newPixelRedIndex + 4);
+										
+										if ( combined_distance( pixelcolor, pixelcolor1, pixelcolor2) < threshold) {
+											segmentation_map[newPixelRedIndex] = pixelcolor2;
+											searching_array.push(element);
+											
+											return true;
+										}
+										return false;
+									});
+							};
+							
+							(function (){
+								counter = 0;
+								while ( searching_array.length != 0 ){
+									var pixel = searching_array.pop();
+									var pixelRedIndex = ((pixel[1] - 1) * (width * 4)) + ((pixel[0] - 1) * 4); 
+									nexts(pixel[0], pixel[1] ,segmentation_map[pixelRedIndex]);
+									counter += 1;
+							}})();
+							
+						})(imageData.data, imageData.width, imageData.height, canvasX, canvasY, 5000);
+						
+						/* changing color */
+						(function(pixels){
+							for (key in segmentation_map){
+								var intKey = parseInt(key);
+								pixels[intKey] = 0;
+								pixels[intKey + 1] = 0;
+								pixels[intKey + 2] = 0;
+						}})(imageData.data);
+						
+						ctx.clearRect(0, 0, canvas.width, canvas.height);  
+						ctx.putImageData(imageData, 0, 0);
+						/*var pixelcolor = "rgba("+pixels[pixelRedIndex]+", "+pixels[pixelRedIndex+1]+", "+pixels[pixelRedIndex+2]+", "+pixels[pixelRedIndex+3]+")";  
+					  
+						$("body").css("backgroundColor", pixelcolor); */ 
+					});  
+				}, 1000);
+            });  
+		</script>   
+    </body>
+</html>

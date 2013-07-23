@@ -1,113 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>My First Bitstarter</title>
-    <link type="text/css" rel="stylesheet"
-	  href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-2.3.2.css">
-    <link type="text/css" rel="stylesheet"
-	  href="main.css">
-    <style type="text/css">
-      body {
-        padding-top:20px;
-        padding-bottom: 40px;
-}
+    <head>
+    	<meta content="text/html; charset=utf-8" />
+    	<title>My stupid Bitstarter</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap-combined.no-icons.min.css">
+        <link rel="stylesheet" href="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fsocial-buttons.css">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:316,400,500,700,316italic,400italic,500italic,700italic">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans:316italic,400italic,600italic,700italic,316,400,600,700,800">
+		<script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fjquery.js"></script>
+        <script src="https://d396qusza40orc.cloudfront.net/startup%2Fcode%2Fbootstrap.js"></script>
+        <script type="application/javascript">
+			$(window).load(function(){
+				(function($) {
+					$.fn.slideshow = function(options) {
+						options = $.extend({
+							timeout: 3000,
+							speed: 600 
+						}, options);
+						return this.each(function() {
+							var $elem = $(this);
+							$elem.children().eq(0).appendTo($elem).show();
+							setInterval(function() {
+								$elem.children()
+									 .eq(0)
+									 .hide()
+									 .appendTo($elem)
+									.fadeIn(options.speed);
+							}, options.timeout);
+						});
+					};
+				})(jQuery);
+				
+				$(function() {
+					$('.slideshow').slideshow({ timeout: 2000, speed: 500 });
+				});
+			});
+		</script>
+        <style type="text/css">
+			/* large desktop */
+			@media (min-width: 980px) {
+				body{
+					padding-top:60px;
+				}
+				
+				.linediv-l {
+					border-right: 1px white solid;
+				}
+				
+				.linediv-r {
+					border-right: 1px white solid;
+				}
+			}
+			
+			/* landscape phones and down */
+			@media (max-width: 566px) {
+				.copy {
+					padding: 2.5% 10%;
+				}
+				
+				.linediv-l {
+					border-right: 1px white solid;
+				}
+				
+				.linediv-r {
+					border-right: 1px white solid;
+				}
+			}
+			
+			/* All form factors */
+			/* Main body and headings */
+			
+			body {
+				font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+			}
+				
+			.heading, .subheading {
+				font-family:'Ubuntu', Helvetica, Arial, sans-serif;
+				text-align: center;
+			}
+			
+			p.lead {
+				padding-top: 1.5px;
+				font-size: 24px;
+				line-height: 30px;
+			}
+			
+			p {
+				font-size: 18px;
+				line-height:24px;
+			}
+			
+			/* Video pitch and Action */
+			.pitch {
+				padding: 2.5% 0%;
+			}
+			
+			.order {
+				padding: 2% 0%;
+			}
+			
+			.actions {
+				background-color:#343434;
+				padding:3% 0%;
+			}
+			
+			.video, .thermometer, .order, .social, .statistics {
+				text-align: center;
+			}
+			
+			.statistics h3, .statistics p{
+				color: white;
+			}
+			
+			/* Marketing copy and Footer */
+			.copy {
+				padding-top: 2.5%;
+				padding-bottom: 2.5%;
+				text-align: justify;
+			}
+			
+			.asset {
+				padding: 2.5% 0%;
+			}
+			
+			.footer {
+				color: #cccccc;
+				text-align: center;
+			}
+			
+			.footer p {
+				font-size:11px;
+			}
+			
+			.footer a {
+				color: #ccccff;
+			}
+			
+			.slideshow { margin:0 auto;  position: relative; height:358px; overflow:hidden;}
+			
+			.slideshow li { 
+				position: absolute; left: 0; top: 0; height: inherit; display: none; list-style: none; 
+			}
+			
+			.slideshow li:first-child { 
+				display: block; 
+			}
+		</style>
+       </head>
+    </head>
 
-.container {
-        width: 960px;
-}
-
-p.lead {
-        padding-top: 15px;
-}
-
-.navigation, .pitch, .section1, .section2, .faq, .footer {
-        padding: 10px 0px 10px 0px;
-}
-
-.video, .thermometer, .order, .social {
-        border: 1px dotted;
-        text-align: center;
-}
-
-
-.video {
-        height: 124px;
-        line-height: 124px;
-}
-
-.thermometer, .order, .social {
-        height: 40px;
-        line-height: 40px;
-}
-
-div.row {
-        border:1px solid;
-}
-</style>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row navigation">
-	<div class="span2 logo">
-	  Logo
-	</div>
-	<div class="span6 blank">
-	  Blank
-	</div>
-	<div class="span4 about">
-	  About
-	</div>
-	</div>
-      <div class="row heading">
-	<div class="span12">
-	  <h1>Bitstarter Title</h1>
-	</div>
-	</div>
-      <div class="row subheading">
-	<div class="span12">
-	  <p clss="lead">This is my first bitstarter project.</p>
-	</div>
-	</div>
-      <div class="row pitch">
-	<div class="span6 video">
-	  VIdeo
-	</div>
-	<div class="span6">
-	  <div class="thermometer">
-	    Thermometer
-	  </div>
-	  <div class="order">
-	    Order
-	  </div>
-	  <div class="social">
-	    Social
-	  </div>
-	</div>
-	</div>
-      <div class="row section1">
-	<div class="span12">
-	  Marketing section 1
-	</div>
-	</div>
-      <div class="row section2">
-	<div class="span12">
-	  Marketing Section 2
-	</div>
-	</div>
-      <div class="row fqa">
-	<div class="span12">
-	  FAQ
-	</div>
-	</div>
-      <div class="row footer">
-	<div class="span12">
-	  Footer
-	</div>
-	</div>
-      </div>
-    </div>
-</body>
+    <body>
+        <div class="navbar navbar-inverse navbar-fixed-top">
+          <div class="navbar-inner">
+            <div class="container">
+              <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="brand" href="#">History Visualization</a>
+              <div class="nav-collapse collapse">
+                <ul class="nav">
+                  <li class="active"><a href="#">Home</a></li>
+                  <li><a href="#contact">Newest</a></li>
+                  <li><a href="#demo">Demo</a></li>
+                  <li><a href="#contact">Contact</a></li>
+                  <li><a href="#contact">Blog</a></li>
+                </ul>
+              </div><!--/.nav-collapse -->
+            </div>
+          </div>
+        </div>
+        <div class="container">
+        	<div class="row-fluid heading">
+                <div class="span12">
+                    <h1>Cool Map</h1>
+                </div>
+            </div>
+        </div>
+    	<div class="row-fluid subheading">
+        	<div class="span12">
+            	<p class="lead">Dynamic map for all people
+                </p>
+            </div>
+        </div>
+        <div class="row-fluid pitch">
+        	<div class="span5 offset1 video">
+            	<img class="span12 img-polaroid" src="image/image1.png">
+            </div>
+            <div class="span5 actions">
+            	<div class="span8 offset2">
+                	<div class="statistics">
+                    	<div class="span4">
+                        	<div class="linediv-l">
+                            	<h3>1000</h3>
+                                <p> backers </p>
+                            </div>
+                        </div>
+                        <div class="span4">
+                        	<div class="linediv-c">
+                            	<h3>$0</h3>
+                                <p> of $10,000 </p>
+                            </div>
+                        </div>
+                        <div class="span4">
+                        	<div class="linediv-r">
+                            	<h3>100</h3>
+                                <p> days left </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="span10 offset1">
+                <!-- Bootstrap profess bar -->
+                	<div class="thermometer progress active">
+                    	<div class="bar bar-success" style="width:0%;">
+                        </div>
+                        <div class="bar bar-warning" style="width:100%;">
+                        </div>
+                    </div>
+                </div>
+                <div class="span6 offset3 order">
+                <!-- Bootstrap profess bar -->
+                	<button class="btn btn-success btn-large"> preorder</button>
+                </div>
+                <div class="span8 offset2 social">
+                <!-- Bootstrap profess bar -->
+                	<button class="btn btn-twitter"><i class="icon-twitter">| Twitter</i></button>
+                    <button class="btn btn-facebook"><i class="icon-facebook">| Facebook</i></button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="row-fluid section1">
+        	<div class="span5 offset1 asset">
+                <ul class="slideshow">
+                	<li>
+                    	<img class="span12 img-polaroid" src="image/image2a.png">
+                    </li>
+                    <li>
+                    	<img class="span12 img-polaroid" src="image/image2b.png">
+                    </li>
+                    <li>
+                    	<img class="span12 img-polaroid" src="image/image2c.png">
+                    </li>
+                    <li>
+                    	<img class="span12 img-polaroid" src="image/image2d.png">
+                    </li>
+                </ul>
+            </div>
+            <div class="span5 copy">
+            	<p>
+                	Want to create your own geo-visualization for your lectures about the evolvement of United States through time? Want to make your students to get into the escalation of a war or the deployment of a battle? Get bored with creating your historic or geographical lectures on PowerPoint? Need a tool that allows you to create some cool and fun visualization? Here might be where you want to check:
+                </p>
+                <p>
+                <a class="btn btn-large btn-primary pull-right">See some examples</a>
+                </p>
+            </div>
+        </div>
+        <div class="row-fluid faq">
+            <div class="span10 offset1">
+            	<h3>
+                	FAQ
+                </h3>
+                <div class="accordion" id="accordion2">
+                	<div class="accordion-group">
+                    	<div class="accordion-heading">
+                        	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+                            	If this is the first time you use cool map
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse">
+                            <div class="accordion-inner offset1">
+                                Who are we?
+                            </div>
+                        </div>
+                    </div>
+                    <div class="accordion-group">
+                    	<div class="accordion-heading">
+                        	<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+                            	Who want to use cool map?
+                            </a>
+                        </div>
+                        <div id="collapseOne" class="accordion-body collapse">
+                            <div class="accordion-inner">
+                                Who want to use cool map?
+                            </div>
+                        </div>
+                    </div>
+               	</div>
+            </div>
+            <div class="row-fluid footer">
+                <div class="span12">
+                    <p> This work is licensed under the <a href="http://creativecommons.org/licenses/by-sa/3.0/">CC By-SA 3.0 </a>, without all the cruft that would otherwise be put at the bottom of the page.</p>
+                </div>
+            </div>
+        </div>   
+    </body>
 </html>
-      
-      
